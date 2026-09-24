@@ -3,135 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lolhisyappin</title>
+    <title>Retro Character Site</title>
     <style>
+        /* Base Reset & Colors */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: "Comic Sans MS", "Chalkboard SE", "Arial", sans-serif;
         }
 
         body {
-            background-color: #0d0406;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            padding: 40px 20px;
+            background-color: #b2d932; 
+            color: #333;
         }
 
-        /* Avatar Container */
-        .avatar-container {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin-bottom: 25px;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        /* Red Outer Glow Ring */
-        .avatar-glow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 50%;
-            border: 3px solid #ff1a1a;
-            box-shadow: 0 0 15px rgba(255, 26, 26, 0.7);
-        }
-
-        /* Avatar Placeholder Image */
-        .avatar-img {
-            position: absolute;
-            top: 6px;
-            left: 6px;
-            width: 98px;
-            height: 98px;
-            background-color: #2a1115;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        /* Title with Red Cursor Hook */
-        .title-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 35px;
-        }
-
-        .title {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .cursor {
-            color: #ff1a1a;
-            font-size: 2rem;
-            font-weight: 300;
-            margin-left: 2px;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        /* Card Container Grid */
-        .card-list {
-            width: 100%;
-            max-width: 480px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        /* Blank Button Cards */
-        .card {
-            background-color: #161920;
+        /* Content Layout Layout Grid */
+        .main-wrapper {
+            background-color: #ffffff;
+            max-width: 960px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
             border-radius: 8px;
-            height: 80px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Left Sidebar styling */
+        .sidebar {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            border-right: 2px dotted #b2d932;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Requested Text Logo Variant */
+        .main-logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .side-menu {
             width: 100%;
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .side-menu a {
+            font-size: 15px;
+            color: #333333;
+            padding-left: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .side-menu a:hover {
+            color: #b2d932;
+        }
+
+        /* Fresh Badge Notification */
+        .has-badge {
+            position: relative;
+        }
+
+        .badge {
+            background-color: #ff3366;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-right: 5px;
+            text-transform: uppercase;
+        }
+
+        /* Ecards Button Style */
+        .ecards-btn {
+            background-color: #2da1d7;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
             cursor: pointer;
         }
 
-        .card:hover {
-            transform: translateY(-2px);
-            background-color: #1e222b;
+        .ecards-btn span {
+            display: block;
+            font-size: 16px;
+            text-transform: lowercase;
+        }
+
+        .ecards-btn strong {
+            font-size: 22px;
+            display: block;
+        }
+
+        /* Main Display Dashboard Area */
+        .content-area {
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        /* Top Hero Layout Area */
+        .hero-banner {
+            background: linear-gradient(180deg, #1fa2d6 0%, #60c5ef 100%);
+            border-radius: 8px;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        .banner-title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #000000;
+            text-shadow: 2px 2px 0px #ffffff;
+        }
+
+        .hero-banner p {
+            font-size: 18px;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        /* Pink Sub Navigation Banner */
+        .sub-ribbon {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            margin: 15px 0;
+        }
+
+        .sub-ribbon a {
+            color: #ed5297;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .sub-ribbon a:hover {
+            text-decoration: underline;
+        }
+
+        /* Audio Player Container Box */
+        .audio-box {
+            background-color: #4caee3;
+            border-radius: 6px;
+            color: white;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .audio-header {
+            background-color: #3598cb;
+            padding: 6px 12px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .audio-body {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .progress-bar {
+            border-top: 2px dashed rgba(255,255,255,0.6);
+            height: 1px;
+            margin: 5px 0;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .play-btn, .download-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .site-url {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* Newsletter Registration Component */
+        .newsletter-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f7f9f0;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .newsletter-row label {
+            color: #6d8223;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 5px;
+        }
+
+        .input-group input {
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        .input-group button {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Bottom Footer Links Styling */
+        .site-footer {
+            max-width: 960px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 5px;
+        }
+
+        .footer-col a {
+            color: #e2f2b0;
+            font-size: 12px;
+        }
+
+        .footer-col a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Mobile responsive configuration rules */
+        @media(max-width: 768px) {
+            .main-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 2px dotted #b2d932;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Profile Picture Section -->
-    <div class="avatar-container">
-        <div class="avatar-glow"></div>
-        <div class="avatar-img">
-            <!-- Add your avatar image URL inside src when ready -->
-            <img src="" alt="" style="width:100%; height:100%; object-fit:cover;">
-        </div>
+    <div class="main-wrapper">
+        <aside class="sidebar">
+            <div class="main-logo">Chill Guy</div>
+            <nav class="side-menu">
+                <a href="index.html">home</a>
+                <a href="#">cards</a>
+                <a href="#">episodes</a>
+                <a href="#" class="has-badge"><span class="badge">cool</span> archive!</a>
+                <a href="#">Q&A</a>
+                <a href="#">Mr. Blog!</a>
+                <a href="#">F.U.N</a>
+                <a href="#">Download things</a>
+                <a href="prototypes.html">Prototypes</a>
+
+
+
+                <a href="#">Contact</a>
+            </nav>
+            <div class="ecards-btn">
+                <span>old</span>
+                <strong>stuff! --></strong>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <section class="hero-banner">
+                <div class="banner-title">Yo wuzza</div>
+                <p>welcome to my own site bros</p>
+            </section>
+
+            
+
+            
+
+            
+                </div>
+            </section>
+        </main>
     </div>
 
-    <!-- Title Section -->
-    <div class="title-container">
-        <h1 class="title">lolhisyappin</h1>
-        <span class="cursor">|</span>
-    </div>
-
-    <!-- Blank Buttons Container -->
-    <div class="card-list">
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-    </div>
-
-</body>
-</html>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Random Sites</h3>
+                <ul>
+                    

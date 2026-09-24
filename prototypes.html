@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Some Prototypes</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Comic Sans MS", "Chalkboard SE", "Arial", sans-serif;
+        }
+
+        body {
+            background-color: #b2d932;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .main-wrapper {
+            background-color: #ffffff;
+            max-width: 960px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            border-right: 2px dotted #b2d932;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .side-menu {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .side-menu a {
+            font-size: 15px;
+            color: #333333;
+            padding-left: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .side-menu a:hover {
+            color: #b2d932;
+        }
+
+        .has-badge {
+            position: relative;
+        }
+
+        .badge {
+            background-color: #ff3366;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-right: 5px;
+            text-transform: uppercase;
+        }
+
+        .ecards-btn {
+            background-color: #2da1d7;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .ecards-btn span {
+            display: block;
+            font-size: 16px;
+            text-transform: lowercase;
+        }
+
+        .ecards-btn strong {
+            font-size: 22px;
+            display: block;
+        }
+
+        .content-area {
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .hero-banner {
+            background: linear-gradient(180deg, #1fa2d6 0%, #60c5ef 100%);
+            border-radius: 8px;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            padding: 30px;
+        }
+
+        .banner-title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #000000;
+            text-shadow: 2px 2px 0px #ffffff;
+            text-align: center;
+        }
+
+        .hero-banner p {
+            font-size: 18px;
+            margin-top: 8px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        /* Prototype cards */
+
+        .prototype-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .prototype {
+            background-color: #f7f9f0;
+            border-radius: 8px;
+            padding: 18px;
+            border: 2px dotted #b2d932;
+        }
+
+        .prototype h2 {
+            color: #2da1d7;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .prototype p {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .prototype-button {
+            display: inline-block;
+            margin-top: 12px;
+            background-color: #ed5297;
+            color: white;
+            padding: 7px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .prototype-button:hover {
+            background-color: #ff3366;
+        }
+
+        .site-footer {
+            max-width: 960px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 5px;
+        }
+
+        .footer-col a {
+            color: #e2f2b0;
+            font-size: 12px;
+        }
+
+        .footer-col a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        @media(max-width: 768px) {
+            .main-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 2px dotted #b2d932;
+            }
+
+            .prototype-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <aside class="sidebar">
+
+            <div class="main-logo">Chill Guy</div>
+
+            <nav class="side-menu">
+                <a href="index.html">home</a>
+                <a href="#">cards</a>
+                <a href="#">episodes</a>
+                <a href="#" class="has-badge">
+                    <span class="badge">cool</span> archive!
+                </a>
+                <a href="#">Q&A</a>
+                <a href="#">Mr. Blog!</a>
+                <a href="#">F.U.N</a>
+                <a href="#">Download things</a>
+                <a href="#">Prototypes</a>
+                <a href="#">Contact</a>
+            </nav>
+
+            <div class="ecards-btn">
+                <span>old</span>
+                <strong>stuff! --></strong>
+            </div>
+
+        </aside>
+
+
+        <main class="content-area">
+
+            <section class="hero-banner">
+                <div class="banner-title">Some prototypes</div>
+                <p>weird stuff i've been working on</p>
+            </section>
+
+
+            <section class="prototype-grid">
+
+                <div class="prototype">
+                    <h2>Prototype #1</h2>
+                    <p>
+                        A little experiment that I made. It's not finished yet,
+                        but hey, it exists!
+                    </p>
+                    <a href="#" class="prototype-button">check it out!</a>
+                </div>
+
+                <div class="prototype">
+                    <h2>Prototype #2</h2>
+                    <p>
+                        Another random project that might eventually become
+                        something cool.
+                    </p>
+                    <a href="#" class="prototype-button">check it out!</a>
+                </div>
+
+                <div class="prototype">
+                    <h2>Prototype #3</h2>
+                    <p>
+                        This one is still REALLY experimental. Use at your own
+                        risk lol.
+                    </p>
+                    <a href="#" class="prototype-button">check it out!</a>
+                </div>
+
+                <div class="prototype">
+                    <h2>Prototype #4</h2>
+                    <p>
+                        A mysterious unfinished project. More stuff coming soon!
+                    </p>
+                    <a href="#" class="prototype-button">check it out!</a>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <footer class="site-footer">
+
+        <div class="footer-grid">
+
+            <div class="footer-col">
+                <h3>Random Sites</h3>
+                <ul>
+                    <li><a href="#">cool site</a></li>
+                    <li><a href="#">another site</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Stuff</h3>
+                <ul>
+                    <li><a href="#">downloads</a></li>
+                    <li><a href="#">games</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>More</h3>
+                <ul>
+                    <li><a href="#">archive</a></li>
+                    <li><a href="#">contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Prototype Zone</h3>
+                <ul>
+                    <li><a href="#">experiments</a></li>
+                    <li><a href="#">unfinished stuff</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
+```
